@@ -39,8 +39,8 @@ import ffmpeg
 import urllib.request
 urllib.request.urlretrieve("https://download.openxlab.org.cn/models/Kevin676/rvc-models/weight/UVR-HP2.pth", "uvr5/uvr_model/UVR-HP2.pth")
 urllib.request.urlretrieve("https://download.openxlab.org.cn/models/Kevin676/rvc-models/weight/UVR-HP5.pth", "uvr5/uvr_model/UVR-HP5.pth")
-urllib.request.urlretrieve("https://download.openxlab.org.cn/models/Kevin676/rvc-models/weight/freevc-24.pth", "checkpoints/freevc-24.pth")
-urllib.request.urlretrieve("https://download.openxlab.org.cn/models/Kevin676/rvc-models/weight/pretrained_bak_5805000.pt", "speaker_encoder/ckpt/pretrained_bak_5805000.pt")
+urllib.request.urlretrieve("https://modelscope.cn/api/v1/models/Kevin676/rvc/repo?Revision=master&FilePath=freevc-24.pth", "checkpoints/freevc-24.pth")
+urllib.request.urlretrieve("https://modelscope.cn/api/v1/models/Kevin676/rvc/repo?Revision=master&FilePath=pretrained_bak_5805000.pt", "speaker_encoder/ckpt/pretrained_bak_5805000.pt")
 
 from uvr5.vr import AudioPre
 weight_uvr5_root = "uvr5/uvr_model"
