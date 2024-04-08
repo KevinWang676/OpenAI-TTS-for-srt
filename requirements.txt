@@ -1,0 +1,11 @@
+altair
+httpx==0.24.1
+scipy
+#torch
+transformers
+webrtcvad==2.0.10
+openai
+gradio==3.36.1
+ffmpeg-python
+librosa==0.9.2
+pydub
