@@ -13,8 +13,8 @@ from speaker_encoder.voice_encoder import SpeakerEncoder
 import urllib.request
 urllib.request.urlretrieve("https://download.openxlab.org.cn/models/Kevin676/rvc-models/weight/UVR-HP2.pth", "uvr5/uvr_model/UVR-HP2.pth")
 urllib.request.urlretrieve("https://download.openxlab.org.cn/models/Kevin676/rvc-models/weight/UVR-HP5.pth", "uvr5/uvr_model/UVR-HP5.pth")
-urllib.request.urlretrieve("https://modelscope.cn/api/v1/models/Kevin676/rvc/repo?Revision=master&FilePath=freevc-24.pth", "checkpoints/freevc-24.pth")
-urllib.request.urlretrieve("https://modelscope.cn/api/v1/models/Kevin676/rvc/repo?Revision=master&FilePath=pretrained_bak_5805000.pt", "speaker_encoder/ckpt/pretrained_bak_5805000.pt")
+urllib.request.urlretrieve("https://download.openxlab.org.cn/repos/file/Kevin676/FreeVC/main?filepath=freevc-24.pth&sign=b879fcda01852499d95a201ccab176cb&nonce=1712593196597", "checkpoints/freevc-24.pth")
+urllib.request.urlretrieve("https://download.openxlab.org.cn/repos/file/Kevin676/FreeVC/main?filepath=pretrained_bak_5805000.pt&sign=806ce204cd5bea182fa16caf628fbde9&nonce=1712593211218", "speaker_encoder/ckpt/pretrained_bak_5805000.pt")
 
 '''
 def get_wavlm():
