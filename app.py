@@ -10,6 +10,12 @@ from models import SynthesizerTrn
 from mel_processing import mel_spectrogram_torch
 from speaker_encoder.voice_encoder import SpeakerEncoder
 
+import urllib.request
+urllib.request.urlretrieve("https://download.openxlab.org.cn/models/Kevin676/rvc-models/weight/UVR-HP2.pth", "uvr5/uvr_model/UVR-HP2.pth")
+urllib.request.urlretrieve("https://download.openxlab.org.cn/models/Kevin676/rvc-models/weight/UVR-HP5.pth", "uvr5/uvr_model/UVR-HP5.pth")
+urllib.request.urlretrieve("https://modelscope.cn/api/v1/models/Kevin676/rvc/repo?Revision=master&FilePath=freevc-24.pth", "checkpoints/freevc-24.pth")
+urllib.request.urlretrieve("https://modelscope.cn/api/v1/models/Kevin676/rvc/repo?Revision=master&FilePath=pretrained_bak_5805000.pt", "speaker_encoder/ckpt/pretrained_bak_5805000.pt")
+
 '''
 def get_wavlm():
     os.system('gdown https://drive.google.com/uc?id=12-cB34qCTvByWT-QtOcZaqwwO21FLSqU')
@@ -18,16 +24,16 @@ def get_wavlm():
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-smodel = SpeakerEncoder('speaker_encoder/ckpt/pretrained_bak_5805000.pt')
+smodel = SpeakerEncoder("speaker_encoder/ckpt/pretrained_bak_5805000.pt")
 
-print("Loading FreeVC-s...")
-hps = utils.get_hparams_from_file("configs/freevc-s.json")
-freevc_s = SynthesizerTrn(
+print("Loading FreeVC(24k)...")
+hps = utils.get_hparams_from_file("configs/freevc-24.json")
+freevc_24 = SynthesizerTrn(
     hps.data.filter_length // 2 + 1,
     hps.train.segment_size // hps.data.hop_length,
     **hps.model).to(device)
-_ = freevc_s.eval()
-_ = utils.load_checkpoint("checkpoints/freevc-s.pth", freevc_s, None)
+_ = freevc_24.eval()
+_ = utils.load_checkpoint("checkpoints/freevc-24.pth", freevc_24, None)
 
 print("Loading WavLM for content...")
 cmodel = WavLMModel.from_pretrained("microsoft/wavlm-large").to(device)
@@ -36,11 +42,6 @@ cmodel = WavLMModel.from_pretrained("microsoft/wavlm-large").to(device)
 from openai import OpenAI
 
 import ffmpeg
-import urllib.request
-urllib.request.urlretrieve("https://download.openxlab.org.cn/models/Kevin676/rvc-models/weight/UVR-HP2.pth", "uvr5/uvr_model/UVR-HP2.pth")
-urllib.request.urlretrieve("https://download.openxlab.org.cn/models/Kevin676/rvc-models/weight/UVR-HP5.pth", "uvr5/uvr_model/UVR-HP5.pth")
-urllib.request.urlretrieve("https://modelscope.cn/api/v1/models/Kevin676/rvc/repo?Revision=master&FilePath=freevc-24.pth", "checkpoints/freevc-24.pth")
-urllib.request.urlretrieve("https://modelscope.cn/api/v1/models/Kevin676/rvc/repo?Revision=master&FilePath=pretrained_bak_5805000.pt", "speaker_encoder/ckpt/pretrained_bak_5805000.pt")
 
 from uvr5.vr import AudioPre
 weight_uvr5_root = "uvr5/uvr_model"
