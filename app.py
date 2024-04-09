@@ -74,4 +74,4 @@ with gr.Blocks() as app:
         </div>
     ''')
 
-app.launch(share=True, show_error=True)
+app.launch(show_error=True)
