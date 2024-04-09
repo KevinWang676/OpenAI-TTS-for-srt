@@ -48,9 +48,9 @@ def denoise(video_full, split_model):
         pre_fun = pre_fun_hp5
 
     filename = "output"
-    pre_fun._path_audio_("audio_full.wav", f"./{split_model}/", f"./{split_model}/", "wav")
+    pre_fun._path_audio_("audio_full.wav", f"./{split_model}/", f"./{split_model}/", "mp3")
      
-    return f"./{split_model}/vocal_audio_full.wav_10.wav"
+    return f"./{split_model}/vocal_audio_full.mp3_10.mp3"
 
 
 with gr.Blocks() as app:
