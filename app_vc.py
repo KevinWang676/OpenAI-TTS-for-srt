@@ -13,7 +13,7 @@ from speaker_encoder.voice_encoder import SpeakerEncoder
 import urllib.request
 urllib.request.urlretrieve("https://download.openxlab.org.cn/models/Kevin676/rvc-models/weight/UVR-HP2.pth", "uvr5/uvr_model/UVR-HP2.pth")
 urllib.request.urlretrieve("https://download.openxlab.org.cn/models/Kevin676/rvc-models/weight/UVR-HP5.pth", "uvr5/uvr_model/UVR-HP5.pth")
-urllib.request.urlretrieve("https://download.openxlab.org.cn/repos/file/Kevin676/FreeVC/main?filepath=freevc-24.pth&sign=53b52fc3c99f62331ae65f865af82b50&nonce=1712634905468", "checkpoints/freevc-24.pth")
+zurllib.request.urlretrieve("https://download.openxlab.org.cn/repos/file/Kevin676/FreeVC/main?filepath=freevc-24.pth&sign=53b52fc3c99f62331ae65f865af82b50&nonce=1712634905468", "checkpoints/freevc-24.pth")
 urllib.request.urlretrieve("https://download.openxlab.org.cn/repos/file/Kevin676/FreeVC/main?filepath=pretrained_bak_5805000.pt&sign=466e9f109ce3a833ff40d8290dd91596&nonce=1712634925741", "speaker_encoder/ckpt/pretrained_bak_5805000.pt")
 
 '''
