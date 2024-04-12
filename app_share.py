@@ -66,10 +66,10 @@ html_vc = """
 	src="https://gradio.s3-us-west-2.amazonaws.com/4.15.0/gradio.js"
 ></script>
 <iframe
-	src="https://kevinwang676-openai-tts-free-vc.hf.space"
+	src="https://kevinwang676-openai-tts-free-vc-2.hf.space"
 	frameborder="0"
-	width="850"
-	height="450"
+    	width="1280"
+    	height="1000"
 ></iframe>
 </body>
 </html>
