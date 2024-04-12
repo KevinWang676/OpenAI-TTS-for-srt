@@ -69,7 +69,7 @@ html_vc = """
 	src="https://kevinwang676-openai-tts-free-vc-2.hf.space"
 	frameborder="0"
     	width="1280"
-    	height="1000"
+    	height="1200"
 ></iframe>
 </body>
 </html>
