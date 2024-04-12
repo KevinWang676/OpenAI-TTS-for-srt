@@ -52,26 +52,50 @@ def denoise(video_full, split_model):
      
     return f"./{split_model}/vocal_audio_full.wav_10.mp3"
 
+html_vc = """
+<html>
+<head>
+</script>
+<link rel="stylesheet" href="https://gradio.s3-us-west-2.amazonaws.com/2.6.2/static/bundle.css">
+</head>
+<body>
+<div id="target"></div>
+<script src="https://gradio.s3-us-west-2.amazonaws.com/2.6.2/static/bundle.js"></script>
+<script
+	type="module"
+	src="https://gradio.s3-us-west-2.amazonaws.com/4.15.0/gradio.js"
+></script>
+<iframe
+	src="https://kevinwang676-openai-tts-free-vc.hf.space"
+	frameborder="0"
+	width="850"
+	height="450"
+></iframe>
+</body>
+</html>
+"""
 
 with gr.Blocks() as app:
-    gr.Markdown("# <center>🌊💕🎶 OpenAI TTS - SRT文件一键AI配音</center>")
-    gr.Markdown("### <center>🌟 只需上传SRT文件和原版配音文件即可，每次一集视频AI自动配音！Developed by Kevin Wang </center>")
-    with gr.Row():
-        with gr.Column():
-            inp1 = gr.Video(label="请上传一集包含原声配音的视频", info="需要是.mp4视频文件")
-            inp2 = gr.Dropdown(label="请选择用于分离伴奏的模型", info="UVR-HP5去除背景音乐效果更好，但会对人声造成一定的损伤", choices=["UVR-HP2", "UVR-HP5"], value="UVR-HP5")
-            btn = gr.Button("一键去除背景音吧💕", variant="primary")
-        with gr.Column():
-            out1 = gr.Audio(label="为您合成的原声音频", type="filepath")
-
-        btn.click(denoise, [inp1, inp2], [out1])
-        
-    gr.Markdown("### <center>注意❗：请勿生成会对任何个人或组织造成侵害的内容，请尊重他人的著作权和知识产权。用户对此程序的任何使用行为与程序开发者无关。</center>")
-    gr.HTML('''
-        <div class="footer">
-                    <p>🌊🏞️🎶 - 江水东流急，滔滔无尽声。 明·顾璘
-                    </p>
-        </div>
-    ''')
-
+    with gr.Tab("一键去除背景音🤗")
+        gr.Markdown("# <center>🌊💕🎶 OpenAI TTS - SRT文件一键AI配音</center>")
+        gr.Markdown("### <center>🌟 只需上传SRT文件和原版配音文件即可，每次一集视频AI自动配音！Developed by Kevin Wang </center>")
+        with gr.Row():
+            with gr.Column():
+                inp1 = gr.Video(label="请上传一集包含原声配音的视频", info="需要是.mp4视频文件")
+                inp2 = gr.Dropdown(label="请选择用于分离伴奏的模型", info="UVR-HP5去除背景音乐效果更好，但会对人声造成一定的损伤", choices=["UVR-HP2", "UVR-HP5"], value="UVR-HP5")
+                btn = gr.Button("一键去除背景音吧💕", variant="primary")
+            with gr.Column():
+                out1 = gr.Audio(label="为您合成的原声音频", type="filepath")
+    
+            btn.click(denoise, [inp1, inp2], [out1])
+            
+        gr.Markdown("### <center>注意❗：请勿生成会对任何个人或组织造成侵害的内容，请尊重他人的著作权和知识产权。用户对此程序的任何使用行为与程序开发者无关。</center>")
+        gr.HTML('''
+            <div class="footer">
+                        <p>🌊🏞️🎶 - 江水东流急，滔滔无尽声。 明·顾璘
+                        </p>
+            </div>
+        ''')
+    with gr.Tab("一键开启AI配音💕"):
+        input_webui = gr.HTML(html_vc)
 app.launch(show_error=True, share=True)
