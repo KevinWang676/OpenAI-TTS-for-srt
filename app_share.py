@@ -76,7 +76,7 @@ html_vc = """
 """
 
 with gr.Blocks() as app:
-    with gr.Tab("一键去除背景音🤗")
+    with gr.Tab("一键去除背景音🤗"):
         gr.Markdown("# <center>🌊💕🎶 OpenAI TTS - SRT文件一键AI配音</center>")
         gr.Markdown("### <center>🌟 只需上传SRT文件和原版配音文件即可，每次一集视频AI自动配音！Developed by Kevin Wang </center>")
         with gr.Row():
